@@ -1,0 +1,36 @@
+public class Conecta_pruebas {
+
+public static void main(String[] args) {
+
+     
+     try{
+
+      //1. CREAR CONEXION 
+
+        Connection miConexion=DriverManager.getConnection("jdbc:mysql://localhost:3306/pruebas", "root","");
+
+      //2.CREAR OBJETO STATEMENT
+   
+        Statement miStatement =miConexion.createStatament();
+
+      //3. EJECUTAR SQL
+
+        ResultSet miResultset=miStatement.executeQuery("SELECT * FROM PRODUCTOS");
+
+      //4. RECORRER EL RESULTSET
+
+ 	while(miResultset.next()){
+
+	   System.out.println(miResultset.getString("NOMBREARTICULO") + " " + miRResulset.getString("CODIGOARTICULO") + " " + miResulset.getString("PRECIO"));
+
+	}
+	
+      }catch(Exception e){
+
+	System.out.println("NO CONECTA!!");
+
+	e.printStackTrace();
+ 
+      }
+
+     }	
